@@ -43,13 +43,15 @@ public class MainClass {
 	// Clock Tick
 	static int logicalClock = 0;
 	static int clockTrigger = 10;
+	
+	//CheckPoint Message Variables
+	static int totalCheckPointMessage=5;
+	static int sentCheckPointMessage=0;
 
 	// Data Structures to store the messages sent and received before writing it
 	// into the back up file (from last check point to the current point)
 	static ArrayList<String> sentMessageBuffer = new ArrayList<String>();
 	static ArrayList<String> receivedMessageBuffer = new ArrayList<String>();
-	
-	
 
 	public static void main(String[] args) throws NumberFormatException,
 			IOException, InterruptedException {
@@ -78,6 +80,10 @@ public class MainClass {
 		// Thread that starts Request message
 		MessageSender messagesender = new MessageSender();
 		new Thread(messagesender).start();
+
+		Thread.sleep(500);
+		CheckPointInitiaon checkPointInitiaon = new CheckPointInitiaon();
+		new Thread(checkPointInitiaon).start();
 
 	}
 

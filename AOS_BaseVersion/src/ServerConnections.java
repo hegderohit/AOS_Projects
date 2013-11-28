@@ -35,10 +35,10 @@ public class ServerConnections implements Runnable {
 				 * Message);
 				 */
 
-				
-				 MessageReceiver messagereceiver = new MessageReceiver(
-				 clientSocket); new Thread(messagereceiver).start();
-				 
+				MessageReceiver messagereceiver = new MessageReceiver(
+						clientSocket);
+				new Thread(messagereceiver).start();
+
 				count++;
 
 			}
